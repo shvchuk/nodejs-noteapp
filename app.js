@@ -1,26 +1,21 @@
 console.log('Starting app.js');
 
-
 const fs = require('fs');
-const os = require('os');
 const _ = require('lodash');
+
 const notes = require('./notes');
 
-let filteredArray = _.uniq(['Andrew', 'Andrew', 1, 2, 3, 2, 1]);
-console.log(filteredArray);
+let command = process.argv[2];
+console.log('Command: ', command);
 
-// console.log(_.isString(true));
-// console.log(_.isString('Andrew'));
-
-// let result = notes.addNote();
-// console.log(result);
-//
-// let sum = notes.add(2,3);
-// console.log(sum);
-//
-// let user = os.userInfo();
-//
-// fs.appendFile('greetings.txt', `Hello ${user.username}! You are ${notes.age}`);
-
-
-
+if(command === 'add'){
+    console.log('Adding new note');
+} else if(command === 'list'){
+    console.log('Listing all notes');
+} else if(command === 'read'){
+    console.log('Reading the note');
+} else if(command === 'remove'){
+    console.log('Removing the note');
+} else {
+    console.log('Command not recognized');
+}
