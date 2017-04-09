@@ -36,16 +36,29 @@ let getAll = () => {
 };
 
 let getNote = (title) => {
-    console.log('Reading note, title: ', title);
+    let notes = fetchNotes();
+    let note = notes.filter((note) => note.title === title);
+    return note[0];
 };
 
 let removeNote = (title) => {
-    console.log('Removing the note, title: ', title);
+    let notes = fetchNotes();
+    let newNotesArray = notes.filter((note) => note.title !== title);
+    saveNotes(newNotesArray);
+
+    return notes.length !== newNotesArray.length;
+};
+
+let logNote = (note) => {
+    console.log('--');
+    console.log(`Title: ${note.title}`);
+    console.log(`Body: ${note.body}`);
 };
 
 module.exports = {
     addNote,
     getAll,
     getNote,
-    removeNote
+    removeNote,
+    logNote
 };
