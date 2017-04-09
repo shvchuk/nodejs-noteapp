@@ -12,7 +12,15 @@ console.log('Command: ', command);
 console.log('Yargs ', argv);
 
 if(command === 'add'){
-    notes.addNote(argv.title, argv.body);
+    let note = notes.addNote(argv.title, argv.body);
+    if(note){
+        console.log('New note created');
+        console.log('--');
+        console.log(`Title: ${note.title}`);
+        console.log(`Body: ${note.body}`);
+    } else {
+        console.log('Already exists the note with the title: ' + argv.title);
+    }
 } else if(command === 'list'){
     notes.getAll();
 } else if(command === 'read'){
